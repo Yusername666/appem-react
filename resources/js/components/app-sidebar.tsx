@@ -18,7 +18,7 @@ const mainNavItems: NavItem[] = [
         title: 'Master Data',
         href: '#',
         icon: Box,
-        children: 
+        children:
         [
             {
                 title: 'Sektor Ekonomi',
@@ -37,7 +37,7 @@ const mainNavItems: NavItem[] = [
             },
             {
                 title: 'Wilayah',
-                href: '/wilayahs',
+                href: '/wilayah',
                 icon: PackageSearch,
             },
             {
@@ -51,7 +51,7 @@ const mainNavItems: NavItem[] = [
         title: 'Laporan Rekap',
         href: '#',
         icon: ChartCandlestick,
-        children: 
+        children:
         [
             {
                 title: 'Rekap Data Izin',
@@ -75,7 +75,7 @@ const mainNavItems: NavItem[] = [
         title: 'Berita & Informasi',
         href: '#',
         icon: Library,
-        children: 
+        children:
         [
             {
                 title: 'Katalog Investasi',
@@ -115,11 +115,11 @@ export function AppSidebar() {
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
-        
+
             <SidebarContent>
                 <NavMain items={mainNavItems} />
             </SidebarContent>
-        
+
             <SidebarFooter>
                 <NavFooter items={footerNavItems} className="mt-auto" />
                 <NavUser />
