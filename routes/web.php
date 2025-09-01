@@ -12,6 +12,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
     Route::resource('wilayah', App\Http\Controllers\WilayahController::class);
+    Route::resource('provinsi', App\Http\Controllers\ProvinsiController::class);
 });
 
 

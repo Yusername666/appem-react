@@ -5,10 +5,10 @@ import { ColumnDef, ColumnFiltersState, flexRender, getCoreRowModel, getFiltered
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { NumberFormat } from '@/utils/numberFormat';
 import { Link, router } from '@inertiajs/react';
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ChevronUp, RotateCcw, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { NumberFormat } from '@/utils/numberFormat';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
@@ -77,7 +77,7 @@ export function DataTableServer<TData, TValue>({ columns, initialData }: DataTab
 
     const handleSort = (columnId: string, direction: 'asc' | 'desc') => {
         const params = new URLSearchParams(window.location.search);
-        
+
         params.set('sort', columnId);
         params.set('direction', direction);
         params.set('page', '1');
@@ -126,7 +126,6 @@ export function DataTableServer<TData, TValue>({ columns, initialData }: DataTab
         );
         setSearchInput('');
     };
-
     return (
         <>
             <div className="my-3 flex w-full items-center space-x-2">
@@ -227,25 +226,25 @@ export function DataTableServer<TData, TValue>({ columns, initialData }: DataTab
                             Halaman {NumberFormat(initialData.current_page)} dari {NumberFormat(initialData.last_page)}
                         </div>
                         <div className="flex items-center space-x-2">
-                            <Link href={initialData.first_page_url} preserveScroll>
+                            <Link href={initialData.first_page_url ?? "#"} preserveScroll>
                                 <Button variant="outline" className="hidden h-8 w-8 p-0 lg:flex" disabled={initialData.current_page === 1}>
                                     <span className="sr-only">Halaman pertama</span>
                                     <ChevronsLeft />
                                 </Button>
                             </Link>
-                            <Link href={initialData.prev_page_url} preserveScroll>
+                            <Link href={initialData.prev_page_url ?? "#"} preserveScroll>
                                 <Button variant="outline" className="h-8 w-8 p-0" disabled={initialData.current_page === 1}>
                                     <span className="sr-only">Halaman sebelumnya</span>
                                     <ChevronLeft />
                                 </Button>
                             </Link>
-                            <Link href={initialData.next_page_url} preserveScroll>
+                            <Link href={initialData.next_page_url ?? "#"} preserveScroll>
                                 <Button variant="outline" className="h-8 w-8 p-0" disabled={initialData.current_page === initialData.last_page}>
                                     <span className="sr-only">Halaman berikutnya</span>
                                     <ChevronRight />
                                 </Button>
                             </Link>
-                            <Link href={initialData.last_page_url} preserveScroll>
+                            <Link href={initialData.last_page_url ?? "#"} preserveScroll>
                                 <Button
                                     variant="outline"
                                     className="hidden h-8 w-8 p-0 lg:flex"
